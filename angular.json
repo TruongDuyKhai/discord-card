@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/camilo404-site",
+            "outputPath": "dist/Ppagesitev2",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
