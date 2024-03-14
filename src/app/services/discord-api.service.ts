@@ -8,7 +8,7 @@ import { Profile } from '../models/discord-profile.model';
 })
 export class DiscordApiService {
 
-  urlDiscordApi: string = 'https://camilo404.azurewebsites.net/api/profile/'
+  urlDiscordApi: string = 'https://camilo404.azurewebsites.net/api/profile/863408310903635998'
 
 constructor(private http: HttpClient) { }
 
