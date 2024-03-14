@@ -23,7 +23,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.cio", "src/assets", "src/CNAME", "src/browser/.nojekyll"],
+            "assets": ["src/favicon.ico", "src/assets", "src/CNAME", "src/browser/.nojekyll"],
             "styles": [
               "src/styles.scss",
               "node_modules/atropos/atropos.min.css"
@@ -92,7 +92,7 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.gif", "src/assets"],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "src/styles.scss",
               "node_modules/atropos/atropos.min.css"
