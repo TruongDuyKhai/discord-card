@@ -23,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Test build website
-        run: git clone git@github.com:TruongDuyKhai/TruongDuyKhai.github.io.git | yarn deploy --repo=https://github.com/TruongDuyKhai/TruongDuyKhai.github.io.git
+        run: yarn deploy --repo=https://github.com/TruongDuyKhai/TruongDuyKhai.github.io.git --name="TruongDuyKhai" --email="truongduykhai1012@gmail.com"
