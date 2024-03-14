@@ -14,12 +14,6 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
-        "deploy": {
-          "builder": "angular-cli-ghpages:deploy",
-          "options": {
-            "buildTarget": "Camilo404-Site:build:production"
-          }
-        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
