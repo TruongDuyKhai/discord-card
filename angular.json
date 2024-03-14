@@ -14,6 +14,12 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "buildTarget": "Camilo404-Site:build:production"
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -23,7 +29,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/CNAME"],
+            "assets": ["src/favicon.cio", "src/assets", "src/CNAME", "src/browser/.nojekyll"],
             "styles": [
               "src/styles.scss",
               "node_modules/atropos/atropos.min.css"
@@ -92,7 +98,7 @@
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.gif", "src/assets"],
             "styles": [
               "src/styles.scss",
               "node_modules/atropos/atropos.min.css"
