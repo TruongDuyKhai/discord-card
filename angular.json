@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "angular-cli-ghpages:deploy",
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
