@@ -23,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Test build website
-        run: yarn deploy
+        run: yarn deploy --repo=https://github.com/TruongDuyKhai/TruongDuyKhai.github.io.git
