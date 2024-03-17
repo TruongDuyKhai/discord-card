@@ -77,37 +77,58 @@ export class CardProfileComponent implements OnInit {
         // Format the timestamps of the activities
         this.lanyardActivities.forEach((activity) => {
           if (activity.timestamps) {
-            if(!activity.timestamps.start) {
-              activity.timestamps.start = '';
-              return;
-            };
-            const startTime = new Date(activity.timestamps.start || 0);
-            const currentTime = new Date();
-            const timeDifference = currentTime.getTime() - startTime.getTime();
-
-            const hours = Math.floor(timeDifference / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-            let timeAgoMessage = '';
-            if (hours > 0) {
-              timeAgoMessage += `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
+            const { start } = activity.timestamps;
+            if (start) {
+              const startTime = new Date(start);
+              
+              // Function to update time ago message
+              const updateAgoMessage = () => {
+                const currentTime = new Date();
+                const timeDifference = currentTime.getTime() - startTime.getTime();
+        
+                const hours = Math.floor(timeDifference / (1000 * 60 * 60));
+                let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000); // Remove secondsPassed, calculate directly
+        
+                let timeAgoMessage = '';
+        
+                // If seconds exceed 60, increase minutes accordingly
+                if (seconds >= 60) {
+                  seconds = seconds % 60; // Reset seconds
+                  const extraMinutes = Math.floor(seconds / 60); // Calculate extra minutes
+                  minutes += extraMinutes; // Increase minutes
+                }
+        
+                if (hours > 0) {
+                  timeAgoMessage += `${hours} ${hours === 1 ? 'hour' : 'hours'}`;
+                }
+        
+                if (minutes > 0) {
+                  timeAgoMessage += `${timeAgoMessage ? ' : ' : ''}${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`;
+                }
+        
+                if (seconds > 0) {
+                  timeAgoMessage += `${timeAgoMessage ? ' : ' : ''}${seconds} ${seconds === 1 ? 'second' : 'seconds'}`;
+                }
+        
+                return timeAgoMessage;
+              };
+        
+              activity.timestamps.start = updateAgoMessage() || '';
+              
+              // Call updateAgoMessage() every second
+              setInterval(() => {
+                if (activity.timestamps) {
+                  activity.timestamps.start = updateAgoMessage() || '';
+                }
+              }, 1000);
             }
-
-            if (minutes > 0) {
-              if (timeAgoMessage !== '') {
-                timeAgoMessage += ` and ${minutes} ${minutes === 1 ? 'minute elapsed' : 'minutes elapsed'}`;
-              } else {
-                timeAgoMessage += `${minutes} ${minutes === 1 ? 'minute elapsed' : 'minutes elapsed'}`;
-              }
-            }
-
-            activity.timestamps.start = timeAgoMessage || '';
           }
         });
       },
       error: (error) => {
         console.log(error);
-      }
+      },
     });
   }
 
