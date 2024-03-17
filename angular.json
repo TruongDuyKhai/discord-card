@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Camilo404-Site": {
+    "KhaiDev": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/CNAME", "src/browser/.nojekyll"],
+            "assets": ["src/favicon.ico", "src/assets", "src/CNAME"],
             "styles": [
               "src/styles.scss",
               "node_modules/atropos/atropos.min.css"
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Camilo404-Site:build:production"
+              "browserTarget": "KhaiDev:build:production"
             },
             "development": {
-              "browserTarget": "Camilo404-Site:build:development"
+              "browserTarget": "KhaiDev:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Camilo404-Site:build"
+            "browserTarget": "KhaiDev:build"
           }
         },
         "test": {

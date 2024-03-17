@@ -5,14 +5,14 @@
         <div class="my-[0.45rem]" data-atropos-opacity="0.9;1" *ngIf="userDataStatus">
           <div class="card nitro-card" [ngStyle]="{'--color1': themesColor[0], '--color2': themesColor[1]}">
             <div class="card-header">
-              <div [ngStyle]="{'background-image': 'url(https://camilo404.azurewebsites.net/api/banner/' + userId + ')'}" class="banner-img"></div>
+              <div [ngStyle]="{'background-image': 'url(https://nyxcodeapi.onrender.com/discord/camilo404/banner/' + userId + ')'}" class="banner-img"></div>
             </div>
             <div class="card-body">
               <div class="profile-header" data-atropos-offset="2.5">
                 <a href="https://discord.com/users/{{userId}}" target="_blank">
                   <img class="avatar-decoration" *ngIf="userData?.user?.avatar_decoration_data?.asset" src="https://cdn.discordapp.com/avatar-decoration-presets/{{userData?.user?.avatar_decoration_data?.asset}}.png" alt="Avatar decoration">
                   <div class="profile-logo">
-                    <img src="https://camilo404.azurewebsites.net/api/avatar/{{userId}}" />
+                    <img src="https://nyxcodeapi.onrender.com/discord/camilo404/avatar/{{userId}}" />
                     <div class="presence-state" [ngClass]="{
                       'online': lanyardData?.d?.discord_status === 'online',
                       'idle': lanyardData?.d?.discord_status === 'idle',
@@ -28,7 +28,7 @@
                 <div class="badges-container">
                   <div class="badge-item" *ngFor="let badge of userData?.badges">
                     <a href="{{badge.link || ''}}" target="_blank" class="badge-link">
-                      <img src="https://camilo404.azurewebsites.net/api/badge/{{badge.icon}}.png" alt="{{badge.id}}" />
+                      <img src="https://nyxcodeapi.onrender.com/discord/camilo404/badge/{{badge.icon}}.png" alt="{{badge.id}}" />
                       <div class="tooltip tooltip-up">{{badge.description}}</div>
                     </a>
                   </div>
@@ -55,13 +55,13 @@
                     <div class="flex items-center gap-4 my-4">
                       <div class="activity-icon">
                         <div *ngIf="activity.name !== 'Spotify'">
-                          <img class="large-img" src="https://cdn.discordapp.com/app-assets/{{activity.application_id}}/{{activity.assets?.large_image}}.png" (error)="handleImageError($event)" alt="{{activity.type}}" />
-                          <img class="small-img" *ngIf="activity.assets?.small_image" src="https://cdn.discordapp.com/app-assets/{{activity.application_id}}/{{activity.assets?.small_image}}.png" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                          <img class="large-img" src="{{getActivityImageUrl(activity, activity.assets?.large_image)}}" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                          <img class="small-img" *ngIf="activity.assets?.small_image" src="{{getActivityImageUrl(activity, activity.assets?.small_image)}}" (error)="handleImageError($event)" alt="{{activity.type}}" />
                         </div>
                         <div *ngIf="activity.name === 'Spotify'">
                           <a href="https://open.spotify.com/track/{{activity.sync_id}}" target="_blank" class="link">
-                            <img class="large-img" [src]="'https://i.scdn.co/image/' + getActivityImageId(activity.assets?.large_image || '')" (error)="handleImageError($event)" alt="{{activity.type}}" />
-                            <img class="small-img" *ngIf="activity.assets?.small_image" [src]="'https://i.scdn.co/image/' + getActivityImageId(activity.assets?.small_image || '')" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                            <img class="large-img" [src]="getActivityImageUrl(activity, activity.assets?.large_image)" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                            <img class="small-img" *ngIf="activity.assets?.small_image" [src]="getActivityImageUrl(activity, activity.assets?.small_image)" (error)="handleImageError($event)" alt="{{activity.type}}" />
                           </a>
                         </div>
                       </div>
