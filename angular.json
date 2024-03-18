@@ -103,6 +103,9 @@
               "src/assets/scripts/atropos.js"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
