@@ -1,5 +1,5 @@
 {
-  "name": "Pagesitev2",
+  "name": "KhaiDev",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,7 +18,6 @@
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
-    "angular-cli-ghpages": "^2.0.0-beta.2",
     "atropos": "^2.0.2",
     "marked": "^4.3.0",
     "ngx-markdown": "^16.0.0",
