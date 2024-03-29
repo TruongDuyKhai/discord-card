@@ -136,7 +136,7 @@ export class CardProfileComponent implements OnInit {
     if(activity.id === 'custom') {
       if(activity.emoji?.id) {
         return `https://cdn.discordapp.com/emojis/${activity.emoji.id}.${activity.emoji.animated ? 'gif' : 'png'}`;
-      } else return `https://nyxcodeapi.onrender.com/discord/camilo404/avatar/${this.userId}`;
+      } else return `https://nyxcodeapi.onrender.com/discord/info/avatar/${this.userId}`;
     } else if (asset && asset.startsWith('spotify:')) {
       const parts = asset.split(':');
       return `https://i.scdn.co/image/${parts[1]}`;
