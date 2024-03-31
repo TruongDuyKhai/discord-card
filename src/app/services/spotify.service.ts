@@ -17,6 +17,7 @@ export class SpotifyService {
   latestUri?: any;
   interval: any;
   position: number = 0;
+  duration: number = 30;
 
   loadSpotifyApi() {
     const script = document.createElement('script');
@@ -64,6 +65,7 @@ export class SpotifyService {
       }, (e: any) => {
         this.EmbedController = e;
         this.EmbedController.addListener('playback_update', (e: any) => {
+          this.duration = Number((e.data.duration / 1000).toFixed(0))
           this.position = e.data.position;
         })
         this.latestUri = uri;

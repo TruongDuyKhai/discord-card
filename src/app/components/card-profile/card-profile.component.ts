@@ -97,11 +97,11 @@ export class CardProfileComponent implements OnInit {
                 const timeDifference = currentTime.getTime() - startTime.getTime();
                 if(activity.name == 'Spotify') {
                   this.spotifyService.update(`spotify:track:${activity.sync_id}`);
-                  if(Math.abs(timeDifference - this.spotifyService.position) > 1500) {
+                  if(Math.abs(timeDifference - this.spotifyService.position) > 1500 && Math.abs(this.spotifyService.duration - 30) > 1) {
                     this.spotifyService.seek(timeDifference / 1000);
                   }
                 }
-                
+
                 const hours = Math.floor(timeDifference / (1000 * 60 * 60));
                 let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000); // Remove secondsPassed, calculate directly
