@@ -4,6 +4,7 @@ import { Profile } from 'src/app/models/discord-profile.model';
 import { LanyardService } from 'src/app/services/lanyard.service';
 import { Lanyard, Activity } from 'src/app/models/lanyard-profile.model';
 import { environment } from 'src/environments/environment';
+import { SpotifyService } from 'src/app/services/spotify.service';
 
 declare global {
   interface Window {
@@ -17,7 +18,8 @@ declare global {
   styleUrls: ['./card-profile.component.scss']
 })
 export class CardProfileComponent implements OnInit {
-
+  
+  intervals: Array<any> = [];
   userId = environment.discordId;
   userDataStatus = false;
   userData?: Profile;
@@ -28,12 +30,14 @@ export class CardProfileComponent implements OnInit {
   lanyardData!: Lanyard | null;
   lanyardActivities: Activity[] = [];
 
-  constructor(private discordApiService: DiscordApiService, private lanyardService: LanyardService) { }
+  constructor(private spotifyService: SpotifyService, private discordApiService: DiscordApiService, private lanyardService: LanyardService) { }
 
   ngOnInit(): void {
     this.getDiscordUserData();
 
     this.getLanyardData();
+
+    this.spotifyService.loadSpotifyApi();
   }
 
   public getDiscordUserData(): void {
@@ -70,22 +74,34 @@ export class CardProfileComponent implements OnInit {
     this.lanyardService.getLanyardData().subscribe({
       next: (data) => {
         this.lanyardData = data;
-        console.log(this.lanyardData);
 
         this.lanyardActivities = this.lanyardData.d?.activities || [];
 
+        this.intervals.forEach((interval) => {
+          clearInterval(interval);
+        });
         // Format the timestamps of the activities
         this.lanyardActivities.forEach((activity) => {
           if (activity.timestamps) {
             const { start } = activity.timestamps;
             if (start) {
               const startTime = new Date(start);
+
+              if(!this.lanyardActivities.find(e => e.name == 'Spotify')) {
+                this.spotifyService.destroy();
+              }
               
               // Function to update time ago message
               const updateAgoMessage = () => {
                 const currentTime = new Date();
                 const timeDifference = currentTime.getTime() - startTime.getTime();
-        
+                if(activity.name == 'Spotify') {
+                  this.spotifyService.update(`spotify:track:${activity.sync_id}`);
+                  if(Math.abs(timeDifference - this.spotifyService.position) > 1500) {
+                    this.spotifyService.seek(timeDifference / 1000);
+                  }
+                }
+                
                 const hours = Math.floor(timeDifference / (1000 * 60 * 60));
                 let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000); // Remove secondsPassed, calculate directly
@@ -117,11 +133,11 @@ export class CardProfileComponent implements OnInit {
               activity.timestamps.start = updateAgoMessage() || '';
               
               // Call updateAgoMessage() every second
-              setInterval(() => {
+              this.intervals.push(setInterval(() => {
                 if (activity.timestamps) {
                   activity.timestamps.start = updateAgoMessage() || '';
                 }
-              }, 1000);
+              }, 1000));
             }
           }
         });

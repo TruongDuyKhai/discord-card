@@ -1,3 +1,4 @@
+<div id="spotify"></div>
 <div class="atropos atropos-card">
   <div class="atropos-scale">
     <div class="atropos-rotate">
@@ -55,19 +56,27 @@
                     <div class="flex items-center gap-4 my-4">
                       <div class="activity-icon">
                         <div *ngIf="activity.name !== 'Spotify'">
-                          <img class="large-img" src="{{getActivityImageUrl(activity, activity.assets?.large_image)}}" (error)="handleImageError($event)" alt="{{activity.type}}" />
-                          <img class="small-img" *ngIf="activity.assets?.small_image" src="{{getActivityImageUrl(activity, activity.assets?.small_image)}}" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                          <img class="large-img" src="{{getActivityImageUrl(activity, activity.assets?.large_image)}}"
+                            (error)="handleImageError($event)" alt="{{activity.type}}" />
+                          <img class="small-img" *ngIf="activity.assets?.small_image"
+                            src="{{getActivityImageUrl(activity, activity.assets?.small_image)}}"
+                            (error)="handleImageError($event)" alt="{{activity.type}}" />
                         </div>
                         <div *ngIf="activity.name === 'Spotify'">
                           <a href="https://open.spotify.com/track/{{activity.sync_id}}" target="_blank" class="link">
-                            <img class="large-img" [src]="getActivityImageUrl(activity, activity.assets?.large_image)" (error)="handleImageError($event)" alt="{{activity.type}}" />
-                            <img class="small-img" *ngIf="activity.assets?.small_image" [src]="getActivityImageUrl(activity, activity.assets?.small_image)" (error)="handleImageError($event)" alt="{{activity.type}}" />
+                            <img class="large-img" [src]="getActivityImageUrl(activity, activity.assets?.large_image)"
+                              (error)="handleImageError($event)" alt="{{activity.type}}" />
+                            <img class="small-img" *ngIf="activity.assets?.small_image"
+                              [src]="getActivityImageUrl(activity, activity.assets?.small_image)"
+                              (error)="handleImageError($event)" alt="{{activity.type}}" />
                           </a>
                         </div>
                       </div>
                       <div class="activity-info">
                         <p class="font-bold">{{activity.name}}</p>
-                        <a *ngIf="activity.name === 'Spotify'" href="https://open.spotify.com/track/{{activity.sync_id}}" target="_blank" class="link">{{activity.details}}</a>
+                        <a *ngIf="activity.name === 'Spotify'"
+                          href="https://open.spotify.com/track/{{activity.sync_id}}" target="_blank"
+                          class="link">{{activity.details}}</a>
                         <p *ngIf="activity.name !== 'Spotify'">{{activity.details}}</p>
                         <p>{{activity.state}}</p>
                         <p>{{activity.timestamps?.start}}</p>
@@ -79,13 +88,15 @@
                   <div class="category-title">Connected accounts</div>
                   <div class="badges-connected-accounts">
                     <div class="badge-connected-account" *ngFor="let account of userData?.connected_accounts">
-                      <img src="../../../assets/images/connections/{{account.type}}.svg" alt="{{account.type}}" width="24px" height="24px" />
+                      <img src="../../../assets/images/connections/{{account.type}}.svg" alt="{{account.type}}"
+                        width="24px" height="24px" />
                       <div class="tooltip tooltip-down">{{account.name}}</div>
                     </div>
                   </div>
                 </div>
                 <div class="message">
-                  <input type="text" placeholder="Send a message to @{{userData?.user?.username}}" [(ngModel)]="message" (keyup.enter)="sendMessage()"/>
+                  <input type="text" placeholder="Send a message to @{{userData?.user?.username}}" [(ngModel)]="message"
+                    (keyup.enter)="sendMessage()" />
                 </div>
               </div>
             </div>
