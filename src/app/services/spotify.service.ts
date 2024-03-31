@@ -47,6 +47,14 @@ export class SpotifyService {
     this.EmbedController?.seek(seek);
   }
 
+  loadUri(uri: any) {
+    this.EmbedController?.loadUri(uri);
+  }
+
+  togglePlay() {
+    this.EmbedController.togglePlay();
+  }
+
   update(uri: any) {
     if (uri == this.latestUri) return;
     if (this.EmbedController) {

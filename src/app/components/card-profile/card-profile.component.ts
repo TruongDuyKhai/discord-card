@@ -88,7 +88,10 @@ export class CardProfileComponent implements OnInit {
               const startTime = new Date(start);
 
               if(!this.lanyardActivities.find(e => e.name == 'Spotify')) {
-                this.spotifyService.destroy();
+                setTimeout(() => {
+                  if(!this.lanyardActivities.find(e => e.name == 'Spotify'))
+                    this.spotifyService.destroy();
+                }, 5000);
               }
               
               // Function to update time ago message
