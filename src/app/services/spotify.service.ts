@@ -18,6 +18,7 @@ export class SpotifyService {
   interval: any;
   position: number = 0;
   duration: number = 30;
+  isPlaying: boolean = false;
 
   loadSpotifyApi() {
     const script = document.createElement('script');
@@ -51,7 +52,7 @@ export class SpotifyService {
     if (this.EmbedController) {
       this.latestUri = uri;
       this.EmbedController.loadUri(uri);
-
+      if(this.isPlaying) this.EmbedController?.play();
     } else if (this.IFrameAPI) {
       const div = document.createElement('div');
       document.getElementById('spotify')?.appendChild(div);
@@ -64,9 +65,11 @@ export class SpotifyService {
         uri: uri
       }, (e: any) => {
         this.EmbedController = e;
+        if(this.isPlaying) this.EmbedController?.play();
         this.EmbedController.addListener('playback_update', (e: any) => {
           this.duration = Number((e.data.duration / 1000).toFixed(0))
           this.position = e.data.position;
+          this.isPlaying = !e.data.isPaused;
         })
         this.latestUri = uri;
       });
