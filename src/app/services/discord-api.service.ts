@@ -8,7 +8,7 @@ import { Profile } from '../models/discord-profile.model';
 })
 export class DiscordApiService {
 
-  urlDiscordApi: string = 'https://nyxcodeapi.onrender.com/discord/info/profile/'
+  urlDiscordApi: string = 'https://khaidev.cyclic.app/api/profile/'
 
 constructor(private http: HttpClient) { }
 
