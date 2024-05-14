@@ -65,4 +65,6 @@ export interface AvatarDecorationData {
 }
 
 export interface Kv {
+  theme_colors?: String;
+  banner?: String;
 }
