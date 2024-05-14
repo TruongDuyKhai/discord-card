@@ -20,7 +20,6 @@ export class CardProfileComponent implements OnInit {
 
   intervals: Array<any> = [];
   userId = environment.discordId;
-  banner = environment.banner;
   userDataStatus = false;
   userData?: Profile;
   userBioFormatted?: string;
@@ -30,9 +29,10 @@ export class CardProfileComponent implements OnInit {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, false); // false makes the request synchronous
     xhr.send();
-
+    
     return xhr.status === 200;
   };
+  banner = this.isImage('url(https://khaidevapi.up.railway.app/api/banner/' + this.userId + ')') ? 'url(https://khaidevapi.up.railway.app/api/banner/' + this.userId + ')' : 'url(' + environment.banner + ')'
 
 
   message = '';
