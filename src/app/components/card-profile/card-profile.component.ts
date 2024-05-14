@@ -26,11 +26,11 @@ export class CardProfileComponent implements OnInit {
   themesColor: string[] = [];
   parseInt = parseInt;
   isImage = function isImage(url: string): Boolean {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, false); // false makes the request synchronous
-    xhr.send();
-    
-    return xhr.status === 200;
+    const img = new Image();
+    var res = false;
+    img.onload = () => res = true;
+    img.src = url;
+    return res;
   };
   banner = this.isImage('url(https://khaidevapi.up.railway.app/api/banner/' + this.userId + ')') ? 'url(https://khaidevapi.up.railway.app/api/banner/' + this.userId + ')' : 'url(' + environment.banner + ')'
 
@@ -108,7 +108,7 @@ export class CardProfileComponent implements OnInit {
             this.statusColor = '#747f8d';
             break;
         }
-        
+
         // Format the timestamps of the activities
         this.lanyardActivities.forEach((activity) => {
           if (activity.timestamps) {
