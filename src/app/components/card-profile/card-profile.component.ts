@@ -20,6 +20,7 @@ export class CardProfileComponent implements OnInit {
 
   intervals: Array<any> = [];
   userId = environment.discordId;
+  banner = environment.banner;
   userDataStatus = false;
   userData?: Profile;
   userBioFormatted?: string;
@@ -56,7 +57,7 @@ export class CardProfileComponent implements OnInit {
         // Change all the /n to <br>
         this.userBioFormatted = this.userData.user_profile?.bio?.replace(/\n/g, '<br>');
 
-        this.themesColor = this.userData.user_profile?.theme_colors?.map(e => `#${e.toString(16).padStart(6, '0')}`) || [];
+        this.themesColor = this.userData.user_profile?.theme_colors?.map(e => `#${e.toString(16).padStart(6, '0')}`) || environment.theme_colors;
       },
       error: (error) => {
         this.userDataStatus = false;

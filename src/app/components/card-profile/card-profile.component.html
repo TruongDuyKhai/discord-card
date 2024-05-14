@@ -4,12 +4,12 @@
       <div class="atropos-inner">
         <div class="my-[0.45rem]" data-atropos-opacity="0.9;1" *ngIf="userDataStatus">
           <div class="card nitro-card" [ngStyle]="{
-            '--color1': themesColor[0] ? themesColor[0] : lanyardData && lanyardData.d && lanyardData.d.kv && lanyardData.d.kv.theme_colors ? '#' + parseInt(lanyardData.d.kv.theme_colors.split(' ')[0]).toString(16).padStart(6, '0') : '#5C5C5C', 
-            '--color2': themesColor[1] ? themesColor[1] : lanyardData && lanyardData.d && lanyardData.d.kv && lanyardData.d.kv.theme_colors ? '#' + parseInt(lanyardData.d.kv.theme_colors.split(' ')[1]).toString(16).padStart(6, '0') : '#5C5C5C'
+            '--color1': themesColor[0] ? themesColor[0] : '#5C5C5C', 
+            '--color2': themesColor[1] ? themesColor[1] : '#5C5C5C'
           }">
             <div class="card-header">
               <div
-                [ngStyle]="{'background-image': isImage('url(https://khaidevapi.up.railway.app/api/banner/' + userId + ')') ? 'url(https://khaidevapi.up.railway.app/api/banner/' + userId + ')' : 'url(' + lanyardData?.d?.kv?.banner + ')'}"
+                [ngStyle]="{'background-image': isImage('url(https://khaidevapi.up.railway.app/api/banner/' + userId + ')') ? 'url(https://khaidevapi.up.railway.app/api/banner/' + userId + ')' : 'url(' + banner + ')'}"
                 class="banner-img"></div>
             </div>
             <div class="card-body">
