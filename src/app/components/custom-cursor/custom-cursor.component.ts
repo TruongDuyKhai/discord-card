@@ -13,6 +13,7 @@ export class CustomCursorComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     document.addEventListener('mousemove', (e) => {
+      this.ring.nativeElement.style.display = 'block';
       this.ring.nativeElement.style.transform = `translate(calc(${e.clientX}px - 1rem), calc(${e.clientY}px - 1rem))`;
     });
   }
