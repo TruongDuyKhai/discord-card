@@ -19,6 +19,7 @@ declare global {
 export class CardProfileComponent implements OnInit {
 
   intervals: Array<any> = [];
+  environment = environment;
   userId = environment.discordId;
   userDataStatus = false;
   userData?: Profile;
