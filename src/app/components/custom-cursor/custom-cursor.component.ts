@@ -17,7 +17,6 @@ export class CustomCursorComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(check());
     if (check()) return;
     document.addEventListener('mousemove', (e) => {
       this.ring.nativeElement.style.display = 'block';
