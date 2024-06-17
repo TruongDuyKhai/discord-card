@@ -48,6 +48,14 @@ export class CardProfileComponent implements OnInit {
     this.getDiscordUserData();
 
     this.getLanyardData();
+
+    setInterval(() => {
+      const profileEffectIntro = document.getElementById('profileEffectIntro');
+      if (profileEffectIntro) {
+        profileEffectIntro.setAttribute('src', '');
+        profileEffectIntro.setAttribute('src', environment.profile_effect.intro);
+      }
+    }, 60000);
   }
 
   public getDiscordUserData(): void {
