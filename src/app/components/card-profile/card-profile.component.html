@@ -23,7 +23,7 @@
                     src="https://cdn.discordapp.com/avatar-decoration-presets/{{avatarDecorationAsset}}.png"
                     alt="Avatar decoration">
                   <div class="profile-logo">
-                    <img src="https://khaidevapi.up.railway.app/api/avatar/{{userId}}" />
+                    <img src="https://khaidevapi.onrender.com/discord/data/avatar/{{userId}}" />
                     <div class="presence-state" [ngClass]="{
                       'online': lanyardData?.d?.discord_status === 'online',
                       'idle': lanyardData?.d?.discord_status === 'idle',
@@ -39,7 +39,7 @@
                 <div class="badges-container">
                   <div class="badge-item" *ngFor="let badge of userData?.badges">
                     <a href="{{badge.link || ''}}" target="_blank" class="badge-link">
-                      <img src="https://khaidevapi.up.railway.app/api/badge/{{badge.icon}}.png" alt="{{badge.id}}" />
+                      <img src="https://khaidevapi.onrender.com/discord/data/badge/{{badge.icon}}.png" alt="{{badge.id}}" />
                       <div class="tooltip tooltip-up">{{badge.description}}</div>
                     </a>
                   </div>
