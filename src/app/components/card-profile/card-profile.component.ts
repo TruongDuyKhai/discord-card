@@ -53,7 +53,7 @@ export class CardProfileComponent implements OnInit {
       const profileEffectIntro = document.getElementById('profileEffectIntro');
       if (profileEffectIntro) {
         profileEffectIntro.setAttribute('src', '');
-        profileEffectIntro.setAttribute('src', environment.profile_effect.intro);
+        profileEffectIntro.setAttribute('src', environment.default.profile_effect.intro);
       }
     }, 60000);
   }
@@ -67,11 +67,11 @@ export class CardProfileComponent implements OnInit {
         // Change all the /n to <br>
         this.userBioFormatted = this.userData.user_profile?.bio?.replace(/\n/g, '<br>');
 
-        this.themesColor = this.userData.user_profile?.theme_colors?.map(e => `#${e.toString(16).padStart(6, '0')}`) || environment.theme_colors;
+        this.themesColor = this.userData.user_profile?.theme_colors?.map(e => `#${e.toString(16).padStart(6, '0')}`) || environment.default.theme_colors;
 
-        this.avatarDecorationAsset = this.userData.user?.avatar_decoration_data?.asset || environment.avatar_decoration;
+        this.avatarDecorationAsset = this.userData.user?.avatar_decoration_data?.asset || environment.default.avatar_decoration;
 
-        this.banner = `url(${this.userData.user?.banner ? `https://cdn.discordapp.com/banners/${this.userId}/${this.userData.user.banner}?size=2048` : environment.banner})`;
+        this.banner = `url(${this.userData.user?.banner ? `https://cdn.discordapp.com/banners/${this.userId}/${this.userData.user.banner}?size=2048` : environment.default.banner})`;
       },
       error: (error) => {
         this.userDataStatus = false;

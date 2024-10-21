@@ -7,11 +7,11 @@
             '--color1': themesColor[0] ? themesColor[0] : '#5C5C5C', 
             '--color2': themesColor[1] ? themesColor[1] : '#5C5C5C'
           }" style="position: relative;">
-            <img id="profileEffectIntro" *ngIf="environment.profile_effect.intro"
-              src="{{environment.profile_effect.intro}}"
+            <img id="profileEffectIntro" *ngIf="environment.default.profile_effect.intro"
+              src="{{environment.default.profile_effect.intro}}"
               style="z-index: 1; position: absolute; border-radius: 9px; width: 100%; height: 100%; object-fit: fill; pointer-events: none;">
-            <img id="profileEffectLoop" *ngIf="environment.profile_effect.loop"
-              src="{{environment.profile_effect.loop}}"
+            <img id="profileEffectLoop" *ngIf="environment.default.profile_effect.loop"
+              src="{{environment.default.profile_effect.loop}}"
               style="z-index: 1; position: absolute; border-radius: 9px; width: 100%; height: 100%; object-fit: fill; pointer-events: none;">
             <div class="card-header">
               <div [ngStyle]="{'background-image': banner}" class="banner-img"></div>
