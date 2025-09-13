@@ -2,8 +2,8 @@
 
 <div class="video-container">
   <div id="video_cover"></div>
-  <video id='myVideo' autoplay muted loop #bgVideo>
-    <source src="../../../assets/videos/bgVideo.mp4" type="video/mp4">
+  <video id="myVideo" autoplay muted loop #bgVideo>
+    <source src="../../../assets/videos/bgVideo.mp4" type="video/mp4" />
   </video>
 
   <div class="video-overlay"></div>
@@ -20,17 +20,29 @@
     <section class="glowing-icons">
       <ul class="flex flex-wrap gap-2">
         <li>
-          <a href="https://github.com/TruongDuyKhai/" target="_blank" class="hovered">
+          <a
+            href="https://github.com/TruongDuyKhai/"
+            target="_blank"
+            class="hovered"
+          >
             <i class="fa-brands fa-github"></i>
           </a>
         </li>
         <li>
-          <a href="https://www.facebook.com/khaidev1012/" target="_blank" class="hovered">
+          <a
+            href="https://www.fb.com/khaidev.1012/"
+            target="_blank"
+            class="hovered"
+          >
             <i class="fa-brands fa-facebook"></i>
           </a>
         </li>
         <li>
-          <a href="https://dsc.gg/nyxcode/" target="_blank" class="hovered">
+          <a
+            href="https://discord.gg/MAzfRUJvDy/"
+            target="_blank"
+            class="hovered"
+          >
             <i class="fa-brands fa-discord"></i>
           </a>
         </li>
@@ -38,11 +50,22 @@
     </section>
 
     <div id="sound-slider__container" class="mt-5">
-      <i class='iconVolume text-white hovered bx bxs-volume-mute bx-tada bx-flip-vertical' #iconVolume
-        (click)="toggleMute()"></i>
-      <input type="range" #volumeInput value="0" min="0" max="100" id="sound-slider" (input)="changeVolume($event)"
-        class="hovered">
-      <p id="volume">{{volume}}</p>
+      <i
+        class="iconVolume text-white hovered bx bxs-volume-mute bx-tada bx-flip-vertical"
+        #iconVolume
+        (click)="toggleMute()"
+      ></i>
+      <input
+        type="range"
+        #volumeInput
+        value="0"
+        min="0"
+        max="100"
+        id="sound-slider"
+        (input)="changeVolume($event)"
+        class="hovered"
+      />
+      <p id="volume">{{ volume }}</p>
     </div>
   </div>
 
